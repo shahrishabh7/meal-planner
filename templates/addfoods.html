@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class = "content">
+
+    <h1>Foods</h1>
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Meal</th>
+            <th>Actions</th>
+        </tr>
+        {% for x in foods %}
+            <tr>
+                <td>{{ x.name }}</td>
+                <td>{{ x.category }}</td>
+                <td>
+                    <a href="">Delete</a>
+                    <br>
+                    <a href="">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <form action ="/addfoods" method = "POST">
+        <br>
+        <label for="food">We couldn't find this item in our database! Please manually enter details below:</label>
+        <br>
+        <input type="string" name="food" id="food">
+        <br>
+        <br>
+        <label for="mealtype">Categorize this meal:</label>
+        <select name="mealtype" id="mealtype">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+        </select>
+        <br>
+        <br>
+        <label for="calories">Calories:</label>
+        <input type="number" name="calories" id="calories" required>
+        <br>
+        <label for="fat">Fat:</label>
+        <input type="number" name="fat" id="fat" required>
+        <br>
+        <label for="protein">Protein:</label>
+        <input type="number" name="protein" id="protein" required>
+        <br>
+        <label for="carbs">Carbs:</label>
+        <input type="number" name="carbs" id="carbs" required>
+        <br>
+        <br>
+        <form action=/foods>
+            <input type='submit' value="Submit">
+        </form>
+        <br>
+    </form>
+</div>
+
+{% endblock %}
